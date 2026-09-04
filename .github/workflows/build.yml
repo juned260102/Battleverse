@@ -34,6 +34,10 @@ jobs:
           mkdir project
           unzip -q Battleverse_Android_Project.zip -d project
 
+      - name: Fix Java version
+        run: |
+          sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_21/g' project/app/build.gradle
+
       - name: Build APK and AAB
         working-directory: project
         run: |
